@@ -1,7 +1,6 @@
 package com.plantalot.adapters;
 
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Pair;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
@@ -57,7 +55,7 @@ public class AllPlantsFiltersAdapter extends RecyclerView.Adapter<AllPlantsFilte
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		View view = mInflater.inflate(R.layout.all_plants_bl_drawer_chips, parent, false);
-		fragment.back_button_handler(view);
+		fragment.setupBackButtonHandler();
 		return new ViewHolder(view);
 	}
 	

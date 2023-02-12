@@ -98,6 +98,8 @@ public class CarriolaFragment extends Fragment {
         confirmBtn = view.findViewById(R.id.carriola_confirm_btn);
         clearBtn = view.findViewById(R.id.carriola_clear_btn);
         buttons = view.findViewById(R.id.carriola_buttons);
+        mPieChart = view.findViewById(R.id.piechart_view);
+        scrollView = view.findViewById(R.id.carriola_scrollview);
 
         if (isOrto) {
             MaterialToolbar toolbar = view.findViewById(R.id.carriola_toolbar);
@@ -112,11 +114,8 @@ public class CarriolaFragment extends Fragment {
             }
         }
 
-        setupToolbar();
-        updateOccupiedArea();
-        setupChart();
-
         if (carriola.notEmpty()) {
+            scrollView.setVisibility(View.GONE);
             buttons.setVisibility(View.VISIBLE);
             view.findViewById(R.id.carriola_progressBar).setVisibility(View.VISIBLE);
             view.findViewById(R.id.carriola_text_vuota).setVisibility(View.GONE);
@@ -125,6 +124,10 @@ public class CarriolaFragment extends Fragment {
             buttons.setVisibility(View.GONE);
             ((TextView) view.findViewById(R.id.carriola_text_vuota)).setText(isOrto ? R.string.orto_vuoto : R.string.carriola_vuota);
         }
+
+        setupToolbar();
+        updateOccupiedArea();
+        setupChart();
         return view;
     }
 
@@ -196,6 +199,7 @@ public class CarriolaFragment extends Fragment {
         Handler handler = new Handler();
         handler.post(() -> {
             view.findViewById(R.id.carriola_progressBar).setVisibility(View.GONE);
+            scrollView.setVisibility(View.VISIBLE);
             RecyclerView ortaggiRecyclerView = view.findViewById(R.id.carriola_ortaggi_recycler);
             ortaggiRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             CarriolaOrtaggiAdapter carriolaOrtaggiAdapter = new CarriolaOrtaggiAdapter(carriolaList, carriolaNew, giardino, isOrto, this);
@@ -228,8 +232,6 @@ public class CarriolaFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     private void setupChart() {
-        mPieChart = view.findViewById(R.id.piechart_view);
-        scrollView = view.findViewById(R.id.carriola_scrollview);
         updatePieChart();
 
         ViewTreeObserver.OnScrollChangedListener scrollListener = new ViewTreeObserver.OnScrollChangedListener() {
@@ -251,7 +253,7 @@ public class CarriolaFragment extends Fragment {
     }
 
     private void arrangeOrtaggi() {  // TODO
-        Random rnd = new Random();
+        Random rnd = new Random(System.currentTimeMillis());
         HashMap<String, Orto> orti = giardino.getOrti();
         ArrayList<String> keys = new ArrayList<>(ortiSet);
         for (String ortaggio : carriolaNew.nomiOrtaggi()) {

@@ -89,6 +89,7 @@
                         app:singleSelection="false"
                         app:selectionRequired="true"
                         app:singleLine="true"
+                        android:paddingHorizontal="8dp"
                         />
                 
                 </HorizontalScrollView>

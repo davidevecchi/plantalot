@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,6 +152,8 @@ public class OrtoFragment extends Fragment {
             popup.show();
         });
 
+        setupBackButtonHandler();
+
         return view;
     }
 
@@ -203,6 +206,19 @@ public class OrtoFragment extends Fragment {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updatePieChart() {
         mPieChart.update(ortaggi.getFamiglieCount());
+    }
+
+
+    private void setupBackButtonHandler() {
+        view.setFocusableInTouchMode(true);
+        view.requestFocus();
+        view.setOnKeyListener((v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                Navigation.findNavController(v).navigate(R.id.action_goto_home_from_orto);
+                return true;
+            }
+            return false;
+        });
     }
 
 }

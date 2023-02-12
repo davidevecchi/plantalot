@@ -72,6 +72,13 @@
 		>
 		
 		<action
+			android:id="@+id/action_goto_home_from_allplants"
+			app:destination="@id/homeFragment"
+			app:popUpTo="@id/homeFragment"
+			app:popUpToInclusive="true"
+			/>
+		
+		<action
 			android:id="@+id/action_goto_ortaggio"
 			app:destination="@id/ortaggioFragment"
 			app:launchSingleTop="false"

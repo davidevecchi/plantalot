@@ -19,6 +19,7 @@
 		app:navigationIcon="@drawable/ic_round_close_24"
 		app:subtitleTextAppearance="?attr/subtitle"
 		app:title="Carriola"
+		android:background="?attr/colorSurface"
 		>
 <!--		app:subtitle="12 varietà"-->
 		

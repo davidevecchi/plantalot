@@ -145,4 +145,5 @@ public class HomeFragment extends Fragment {
         ((TextView) view.findViewById(R.id.carriola_area_values)).setText(text);
     }
 
+
 }

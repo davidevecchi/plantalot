@@ -48,7 +48,7 @@ public class AllPlantsSearchAdapter extends RecyclerView.Adapter<AllPlantsSearch
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 		View view = mInflater.inflate(R.layout.all_plants_bl_search_result, parent, false);
-		fragment.back_button_handler(view);
+		fragment.setupBackButtonHandler();
 		return new ViewHolder(view);
 	}
 	
