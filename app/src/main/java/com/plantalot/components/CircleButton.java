@@ -51,8 +51,8 @@ public class CircleButton {  // TODO extends View
 		return bundle;
 	}
 	
-	public static void setupRecycler(List<CircleButton> mButtons, RecyclerView recyclerView, Context context) {
-		CircleButtonsAdapter circleButtonsAdapter = new CircleButtonsAdapter(mButtons);
+	public static void setupRecycler(List<CircleButton> mButtons, RecyclerView recyclerView, Context context, int carriolaCount) {
+		CircleButtonsAdapter circleButtonsAdapter = new CircleButtonsAdapter(mButtons, carriolaCount);
 		FlexboxLayoutManager flexboxLayoutManager = new FlexboxLayoutManager(context);
 		flexboxLayoutManager.setJustifyContent(JustifyContent.CENTER);
 		recyclerView.setLayoutManager(flexboxLayoutManager);

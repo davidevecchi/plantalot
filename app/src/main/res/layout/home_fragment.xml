@@ -27,5 +27,5 @@
 	</LinearLayout>
 	
 	<include layout="@layout/home_fl_content" />
-
+	
 </FrameLayout>

@@ -17,8 +17,8 @@ public class Orto {
 	public enum Orientamento {N, NE, E, SE, S, SO, O, NO}
 	
 	private String nome;
-	private IntPair aiuoleDim;
-	private IntPair aiuoleCount;
+	private final IntPair aiuoleDim;
+	private final IntPair aiuoleCount;
 	private Esposizione esposizione;
 	private Orientamento orientamento;
 	private Carriola ortaggi;
@@ -35,7 +35,25 @@ public class Orto {
 		this();
 		this.nome = nome;
 	}
-	
+
+	public Orto(Orto other) {
+		this.nome = other.nome;
+		this.aiuoleDim = new IntPair(other.aiuoleDim.x, other.aiuoleDim.y);
+		this.aiuoleCount = new IntPair(other.aiuoleCount.x, other.aiuoleCount.y);
+		this.esposizione = other.esposizione;
+		this.orientamento = other.orientamento;
+		this.ortaggi = new Carriola(other.ortaggi);
+	}
+
+	public void updateParameters(Orto other) {
+		this.aiuoleDim.x = other.aiuoleDim.x;
+		this.aiuoleDim.y = other.aiuoleDim.y;
+		this.aiuoleCount.x = other.aiuoleCount.x;
+		this.aiuoleCount.y = other.aiuoleCount.y;
+		this.esposizione = other.esposizione;
+		this.orientamento = other.orientamento;
+	}
+
 //	public Orto(String nome, IntPair aiuoleDim, IntPair aiuoleCount, Esposizione esposizione, Orientamento orientamento) {
 //		this(nome);
 //		this.aiuoleDim = aiuoleDim;
@@ -53,7 +71,7 @@ public class Orto {
 		aiuoleDim.x = x;
 		aiuoleDim.y = y;
 	}
-	
+
 	public void setAiuoleCount(int x, int y) {
 		aiuoleCount.x = x;
 		aiuoleCount.y = y;
@@ -66,7 +84,11 @@ public class Orto {
 	public void setOrientamento(Orientamento orientamento) {
 		this.orientamento = orientamento;
 	}
-	
+
+	public void setOrtaggi(Carriola ortaggi) {
+		this.ortaggi = new Carriola(ortaggi);
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -109,6 +131,10 @@ public class Orto {
 	
 	public Carriola getOrtaggi() {
 		return ortaggi;
+	}
+
+	public Boolean isEmpty() {
+		return ortaggi.isEmpty();
 	}
 	
 	public void addVarieta(String ortaggio, String varieta, Integer count) {

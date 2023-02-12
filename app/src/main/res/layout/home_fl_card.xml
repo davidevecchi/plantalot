@@ -36,7 +36,7 @@
 				android:layout_height="wrap_content"
 				android:layout_gravity="center"
 				tools:itemCount="2"
-				tools:listitem="@layout/home_fl_imageview"
+				tools:listitem="@layout/home_fl_card_plant_image"
 				/>
 		
 		</FrameLayout>

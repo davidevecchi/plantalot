@@ -1,6 +1,7 @@
 package com.plantalot.adapters;
 
 import android.content.Context;
+import android.content.res.ColorStateList;
 import android.os.Build;
 import android.os.Handler;
 import android.util.Pair;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
@@ -78,6 +80,10 @@ public class AllPlantsFiltersAdapter extends RecyclerView.Adapter<AllPlantsFilte
 				Chip chip = new Chip(context);
 				chip.setText(Objects.equals(title, RAGGRUPPA) ? titles.get(c) : c);
 				chip.setCheckable(true);
+
+				chip.setChipBackgroundColor(context.getResources().getColorStateList(R.color.chip_background_color));
+				chip.setTextColor(context.getResources().getColorStateList(R.color.chip_text_color));
+
 //				if (Objects.equals(title, RAGGRUPPA)) {
 				for (String value : activeFilters.get(title)) {
 					if (Objects.equals(value, c)) chip.setChecked(true);

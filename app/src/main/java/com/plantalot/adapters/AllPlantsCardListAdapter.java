@@ -32,7 +32,7 @@ public class AllPlantsCardListAdapter extends RecyclerView.Adapter<AllPlantsCard
 		this.mProgressBar = progressBar;
 //		this.mData.removeIf(p -> p.second.isEmpty());
 	}
-	
+
 	@NonNull
 	@Override
 	public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {

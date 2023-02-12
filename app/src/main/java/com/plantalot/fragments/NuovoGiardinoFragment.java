@@ -39,26 +39,28 @@ import com.plantalot.R;
 import com.plantalot.classes.Giardino;
 
 
-public class NuovoGiardinoFragment extends Fragment implements OnMapReadyCallback {
+public class NuovoGiardinoFragment extends Fragment /*implements OnMapReadyCallback*/ {
 	
 	private final static String TAG = "NuovoGiardinoFragment";
+	private MyApplication app;
+
+	/*
 	private GoogleMap map;
 	private Marker currMarker;
-	private MyApplication app;
 	
 	// The entry point to the Fused Location Provider.
 	private FusedLocationProviderClient fusedLocationProviderClient;
-	
+
 	// A default location (Sydney, Australia) and default zoom to use when location permission is
 	// not granted.
 	private final LatLng defaultLocation = new LatLng(46.0657555, 11.1483961);
 	private static final int DEFAULT_ZOOM = 15;
 	private boolean locationPermissionGranted;
-	
+
 	// The geographical location where the device is currently located. That is, the last-known
 	// location retrieved by the Fused Location Provider.
 	private Location lastKnownLocation;
-	
+
 	// Location permission request
 	private final ActivityResultLauncher<String[]> locationPermissionRequest = registerForActivityResult(
 			new ActivityResultContracts.RequestMultiplePermissions(), result -> {
@@ -76,12 +78,14 @@ public class NuovoGiardinoFragment extends Fragment implements OnMapReadyCallbac
 				getDeviceLocation();
 			}
 	);
+	*/
+
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		app = (MyApplication) this.getActivity().getApplication();
-		fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
+//		fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
 		Log.d(TAG, "" + getParentFragmentManager().getBackStackEntryCount());
 	}
 	
@@ -92,27 +96,31 @@ public class NuovoGiardinoFragment extends Fragment implements OnMapReadyCallbac
 		Log.wtf("oldName", oldName);
 		
 		View view = inflater.inflate(R.layout.nuovo_giardino_fragment, container, false);
-		
+
+		/*
 		new Handler().post(() -> {
 			SupportMapFragment mapFragment = new SupportMapFragment();
 			getChildFragmentManager().beginTransaction().replace(R.id.frame_layout_map, mapFragment).commit();
 			if (mapFragment != null) mapFragment.getMapAsync(this);
 		});
-		
+		*/
+
 		TextView newOrEdit = view.findViewById(R.id.nuovo_giardino_new_or_edit_text);
 		newOrEdit.setText(oldName == null ? R.string.nuovo_giardino : R.string.modifica_giardino);
 		
 		Button backBtn = view.findViewById(R.id.nuovo_giardino_back_btn);
 		MaterialButton saveDeleteBtn = view.findViewById(R.id.nuovo_giardino_save_delete_btn);
 		TextInputEditText inputNome = view.findViewById(R.id.nuovo_giardino_input_nome);
-		
+//		TextInputEditText inputPosizione = view.findViewById(R.id.nuovo_giardino_input_posizione);
+
 		if (oldName == null) {  // save
 			
 			saveDeleteBtn.setOnClickListener(v -> {
 				String nomeGiardino = String.valueOf(inputNome.getText());
-				LatLng markerLoc = currMarker != null ? currMarker.getPosition() : null;
+//				String posizioneGiardino = String.valueOf(inputPosizione.getText());
+//				LatLng markerLoc = currMarker != null ? currMarker.getPosition() : null;
 				if (!nomeGiardino.isEmpty()) {
-					Giardino giardino = new Giardino(nomeGiardino, markerLoc);
+					Giardino giardino = new Giardino(nomeGiardino, "posizioneGiardino");
 					if (app.user.addGiardino(giardino)) {
 						Navigation.findNavController(view).popBackStack();
 					} else {
@@ -159,7 +167,8 @@ public class NuovoGiardinoFragment extends Fragment implements OnMapReadyCallbac
 		
 		return view;
 	}
-	
+
+	/*
 	@Override
 	public void onMapReady(@NonNull GoogleMap googleMap) {
 		this.map = googleMap;
@@ -211,10 +220,10 @@ public class NuovoGiardinoFragment extends Fragment implements OnMapReadyCallbac
 	}
 	
 	private void getDeviceLocation() {
-		/*
-		 * Get the best and most recent location of the device, which may be null in rare
-		 * cases when a location is not available.
-		 */
+
+		// Get the best and most recent location of the device, which may be null in rare
+		// cases when a location is not available.
+
 		Log.d(TAG, "Setting current position on the map");
 		try {
 			if (locationPermissionGranted) {
@@ -241,5 +250,7 @@ public class NuovoGiardinoFragment extends Fragment implements OnMapReadyCallbac
 			Log.e("Exception: %s", e.getMessage(), e);
 		}
 	}
+
+	 */
 	
 }

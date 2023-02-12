@@ -14,7 +14,9 @@ import com.google.android.flexbox.AlignItems;
 import com.google.android.flexbox.FlexboxLayoutManager;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
+import com.plantalot.MyApplication;
 import com.plantalot.R;
+import com.plantalot.classes.Giardino;
 import com.plantalot.components.CircleButton;
 import com.plantalot.utils.Utils;
 
@@ -25,9 +27,11 @@ public class CircleButtonsAdapter extends RecyclerView.Adapter<CircleButtonsAdap
 	
 	private final List<CircleButton> mData;
 	private View view;
-	
-	public CircleButtonsAdapter(List<CircleButton> data) {
+	private int carriolaCount;
+
+	public CircleButtonsAdapter(List<CircleButton> data, int carriolaCount) {
 		this.mData = data;
+		this.carriolaCount = carriolaCount;
 	}
 	
 	@NonNull
@@ -43,6 +47,12 @@ public class CircleButtonsAdapter extends RecyclerView.Adapter<CircleButtonsAdap
 		String label = mData.get(position).getLabel();
 		String action = mData.get(position).getAction();
 		Bundle bundle = mData.get(position).getBundle();
+
+		if (position == 1 && carriolaCount > 0) {  // fixme !!!
+			TextView badge = view.findViewById(R.id.home_carriola_badge);
+			badge.setVisibility(View.VISIBLE);
+			badge.setText(Integer.toString(carriolaCount));
+		}
 		
 		viewHolder.mButton.setIconResource(icon);
 		viewHolder.mTextView.setText(label);

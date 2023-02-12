@@ -1,117 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:showIn="@layout/carriola_fragment"
-	>
-	
-	<androidx.core.widget.NestedScrollView
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="16dp"
-		android:id="@+id/carriola_scrollview"
-		>
-		
-		<LinearLayout
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:orientation="vertical"
-			>
-			
-			<TextView
-				android:id="@+id/carriola_text_vuota"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="16dp"
-				android:layout_marginTop="80dp"
-				android:layout_marginBottom="24dp"
-				android:gravity="center"
-				android:text="La tua carriola è vuota.\nVai in 'Tutti gli ortaggi' per aggiungere nuove varietà."
-				android:textAppearance="?attr/textAppearanceHeadlineSmall"
-				tools:visibility="gone"
-				/>
-			
-			<androidx.recyclerview.widget.RecyclerView
-				android:id="@+id/carriola_ortaggi_recycler"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginVertical="8dp"
-				android:nestedScrollingEnabled="false"
-				android:orientation="vertical"
-				android:overScrollMode="never"
-				tools:itemCount="3"
-				tools:listitem="@layout/carriola_ortaggio"
-				/>
-			
-			
-			<androidx.constraintlayout.widget.ConstraintLayout
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_gravity="center_horizontal"
-				android:layout_marginTop="12dp"
-				android:layout_marginBottom="16dp"
-				android:layout_marginHorizontal="72dp"
-				android:orientation="horizontal"
-				>
-				
-				<TextView
-					android:id="@+id/textView"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textAppearance="?attr/textAppearanceTitleMedium"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent"
-					android:text="Giardino:\nGià piantati:\nCarriola:\nDisponibili:"
-					/>
-				
-				<TextView
-					android:id="@+id/carriola_area_values"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:gravity="end"
-					android:textAppearance="?attr/textAppearanceTitleMedium"
-					app:layout_constraintBottom_toBottomOf="parent"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintTop_toTopOf="parent"
-					android:text="16,0 m²\n4,2 m²\n4,2 m²\n11,8 m²"
-					/>
-			
-			</androidx.constraintlayout.widget.ConstraintLayout>
-			
-			<Button
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:layout_marginHorizontal="40dp"
-				android:layout_marginBottom="24dp"
-				android:text="Conferma"
-				android:id="@+id/carriola_confirm_btn"
-				/>
-			
-			<com.google.android.material.card.MaterialCardView
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				>
-			
-			</com.google.android.material.card.MaterialCardView>
-			
-			<!--		<include layout="@layout/carriola_pie_chart"/>-->
-		
-		</LinearLayout>
-	
-	</androidx.core.widget.NestedScrollView>
-	
-	<ProgressBar
-		android:id="@+id/carriola_progressBar"
-		style="?android:attr/progressBarStyle"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_gravity="center"
-		android:visibility="gone"
-		/>
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/carriola_fragment"
+    >
+    
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/carriola_scrollview"
+        >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                >
+                
+                <TextView
+                    android:id="@+id/carriola_text_vuota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="80dp"
+                    android:layout_marginBottom="24dp"
+                    android:gravity="center"
+                    android:text="@string/carriola_vuota"
+                    android:textAppearance="?attr/textAppearanceHeadlineSmall"
+                    tools:visibility="gone"
+                    />
+                
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/carriola_ortaggi_recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="8dp"
+                    android:nestedScrollingEnabled="false"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    tools:itemCount="2"
+                    tools:listitem="@layout/carriola_ortaggio"
+                    />
+    
+                <include layout="@layout/piechart_card" />
+                
+            </LinearLayout>
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:id="@+id/carriola_buttons"
+                >
+                
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="56dp"
+                    android:text="Pianta in tutti gli orti"
+                    android:id="@+id/carriola_confirm_btn"
+                    />
+                
+                <HorizontalScrollView
+                    android:id="@+id/carriola_chips_scroll_view"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginHorizontal="24dp"
+                    android:overScrollMode="ifContentScrolls"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    >
+                    
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/carriola_chip_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="false"
+                        app:selectionRequired="true"
+                        app:singleLine="true"
+                        />
+                
+                </HorizontalScrollView>
+                
+                <Button
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="56dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="48dp"
+                    android:text="Svuota la carriola"
+                    android:id="@+id/carriola_clear_btn"
+                    />
+            
+            </LinearLayout>
+        
+        </LinearLayout>
+    
+    </androidx.core.widget.NestedScrollView>
+    
+    <ProgressBar
+        android:id="@+id/carriola_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        />
 
 </FrameLayout>
 

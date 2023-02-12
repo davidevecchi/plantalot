@@ -16,8 +16,11 @@
 	<string name="giardino">Giardino</string>
 	<!-- TODO: Remove or change this placeholder text -->
 	<string name="hello_blank_fragment">Hello blank fragment</string>
-	<string name="instruction_no_giardini">Benvenuto! Non hai ancora giardini, è l\'ora di crearne uno! Premi sul menu in alto a sinistra per iniziare.</string>
-	<string name="instruction_no_orti">Non hai ancora nessun orto. Creane uno!</string>
+	<string name="instruction_no_giardini">\nBenvenuto in Plantalot,\nl\'app che ti aiuta a\nprogettare il tuo orto.\n\nPremi sul menu in alto a\nsinistra per creare il tuo\nprimo giardino.</string>
+	<string name="instruction_no_orti">Non hai nessun orto.\nAggiungine uno con il\npulsante sopra.</string>
+	<string name="carriola_vuota">La tua carriola è vuota.\nVai in \'Tutte le piante\' per\naggiungere nuovi ortaggi.</string>
+	<string name="orto_vuoto">Il tuo orto è vuoto.\nVai in \'Tutte le piante\' per\naggiungere nuovi ortaggi.</string>
+	<string name="questo_orto">In questo orto</string>
 	
 	<string name="nome_orto">Nome dell\'orto</string>
 	<string name="dimensioni">Dimensioni aiuola (cm)</string>
@@ -27,11 +30,12 @@
 	<string name="exit_toast">Premi nuovamente per uscire</string>
     <string name="filter">Filtra</string>
 	<string name="search">Cerca</string>
+	<string name="save">Salva</string>
 	<string name="search_hint">Cerca un ortaggio</string>
 	<string name="all_plants_results_number">Mostra %1$d risultati</string>
 	
 	<string name="carriola">Carriola</string>
-	<string name="carriola_help">NOTA: Per poter usufruire di questo strumento è necessario aver creato almeno un orto nel giardino corrente.\n\nLo strumento carriola aiuta a calcolare lo spazio occupato dagli ortaggi che si desidera piantare nel proprio giardino.\n\nSi inseriscono gli ortaggi e si selezionano le quantità, dopodichè si clicca su Conferma.\n\nUn algoritmo (totalmente randomico) deciderà la disposizione ottimale delle piante nei vari orti del giardino.\n\nTiene in considerazione consociazioni, rotazioni e esposizione al fine di garantire le migliori condizioni di crescita alle piante.</string>
+	<string name="carriola_help">NOTA: Per poter usufruire di questo strumento è necessario aver creato almeno un orto nel giardino corrente.\n\nLo strumento carriola aiuta a calcolare lo spazio occupato dagli ortaggi che si desidera piantare nel proprio giardino.\n\nSi inseriscono gli ortaggi e si selezionano le quantità, poi si clicca su Conferma per metterle a dimora.\n\nUn algoritmo (totalmente randomico) deciderà la disposizione ottimale delle piante nei vari orti del giardino.\n\nTiene in considerazione consociazioni, rotazioni e esposizione al fine di garantire le migliori condizioni di crescita alle piante.</string>
 	
 	<plurals name="piante">
 		<item quantity="one">pianta</item>

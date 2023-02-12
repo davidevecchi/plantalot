@@ -7,6 +7,7 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Interpolator;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -66,11 +67,11 @@ public class NavigationIconClickListener implements View.OnClickListener {
 		
 		// Add bottom margin to RecyclerView to not crop the content
 //		RecyclerView fl = sheet.findViewById(R.id.all_plants_fl_card_list_recycler);  // FIXME !!!!!!!!!!!
-		RecyclerView fl = sheet.findViewById(R.id.home_fl_recycler_orti);
-		LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) fl.getLayoutParams();
+		LinearLayout fl = sheet.findViewById(R.id.home_fl_content);
+		FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) fl.getLayoutParams();
 		params.bottomMargin = backdropShown ? translateY : 0;
 		fl.setLayoutParams(params);
-		
+
 	}
 	
 	private void updateIcon(View view) {

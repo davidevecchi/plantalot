@@ -1,78 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/home_backdrop_frontlayer"
-	style="@style/Widget.App.Backdrop.FrontLayer"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:layout_marginTop="?attr/actionBarSize"
-	android:overScrollMode="never"
-	android:paddingHorizontal="16dp"
-	android:scrollbars="none"
-	app:layout_behavior="@string/appbar_scrolling_view_behavior"
-	tools:showIn="@layout/home_fragment"
-	>
-	
-	<LinearLayout
-		android:id="@+id/home_fl_content"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:gravity="center"
-		android:orientation="vertical"
-		>
-		
-		<TextView
-			android:id="@+id/home_fl_title_giardino"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:paddingVertical="24dp"
-			tools:text="Nome giardino"
-			android:textAppearance="?attr/textAppearanceHeadline5"
-			/>
-		
-		<!-- FIXME width -->
-		<TextView
-			android:id="@+id/anonymousStatusId"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			tools:text="anonymousStatusId"
-			android:visibility="gone"
-			/>
-		
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/home_fl_recycler_navbuttons"
-			android:layout_width="288dp"
-			android:layout_height="wrap_content"
-			android:nestedScrollingEnabled="false"
-			android:overScrollMode="never"
-			android:paddingBottom="24dp"
-			tools:itemCount="1"
-			tools:listitem="@layout/component_circle_button"
-			/>
-		
-		<TextView
-			android:id="@+id/instructions"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:gravity="center"
-			tools:text="Instructions"
-			android:textSize="24sp"
-			/>
-		
-		<androidx.recyclerview.widget.RecyclerView
-			android:id="@+id/home_fl_recycler_orti"
-			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
-			android:nestedScrollingEnabled="false"
-			android:overScrollMode="never"
-			android:paddingBottom="24dp"
-			tools:itemCount="3"
-			tools:listitem="@layout/home_fl_card"
-			/>
-	
-	</LinearLayout>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_backdrop_frontlayer"
+    style="@style/Widget.App.Backdrop.FrontLayer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:overScrollMode="never"
+    android:scrollbars="none"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/home_fragment"
+    >
+    
+    <ImageView
+        android:id="@+id/home_fl_arrow_hint"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:src="@mipmap/curved_arrow"
+        android:elevation="99dp"
+        android:visibility="gone"
+        android:scaleY="-1"
+        android:rotation="20"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="6dp"
+        android:alpha=".75"
+        />
+    
+    <ImageView
+        android:id="@+id/home_fl_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@mipmap/background2"
+        android:layout_gravity="bottom"
+        android:scaleType="fitEnd"
+        android:elevation="99dp"
+        android:visibility="gone"
+        />
+    
+    <androidx.core.widget.NestedScrollView
+        style="@style/Widget.App.Backdrop.FrontLayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never"
+        android:paddingHorizontal="16dp"
+        android:scrollbars="none"
+        tools:showIn="@layout/home_fragment"
+        android:id="@+id/home_scrollview"
+        >
+        
+        <LinearLayout
+            android:id="@+id/home_fl_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="12dp"
+            >
+            
+            <TextView
+                android:id="@+id/home_fl_title_giardino"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="24dp"
+                tools:text="Nome giardino"
+                android:textAppearance="?attr/textAppearanceHeadline5"
+                />
+            
+            <!-- FIXME width -->
+            <TextView
+                android:id="@+id/anonymousStatusId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="anonymousStatusId"
+                android:visibility="gone"
+                />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_fl_recycler_navbuttons"
+                android:layout_width="288dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:paddingBottom="24dp"
+                tools:itemCount="1"
+                tools:listitem="@layout/component_circle_button"
+                />
+            
+            <TextView
+                android:id="@+id/instructions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                tools:text="Instructions"
+                android:textSize="24sp"
+                android:lineSpacingExtra="5sp"
+                />
+            
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/home_fl_recycler_orti"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:paddingBottom="12dp"
+                tools:itemCount="3"
+                tools:listitem="@layout/home_fl_card"
+                />
+            
+            <FrameLayout
+                android:id="@+id/home_chart"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                >
+                
+                <include layout="@layout/piechart_card" />
+                
+            </FrameLayout>
+        
+        </LinearLayout>
+    
+    </androidx.core.widget.NestedScrollView>
 
-</androidx.core.widget.NestedScrollView>
+</FrameLayout>

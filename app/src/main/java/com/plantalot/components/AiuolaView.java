@@ -13,18 +13,18 @@ import com.plantalot.classes.Orto;
 import com.plantalot.utils.IntPair;
 
 
-public class OrtoView extends LinearLayout {
+public class AiuolaView extends LinearLayout {
 	
 	Orto orto;
 	FrameLayout ortoView;
 	Context context;
 	
-	public OrtoView(Context context, Orto orto, IntPair size) {
+	public AiuolaView(Context context, Orto orto, IntPair size) {
 		super(context);
 		this.context = context;
 		this.orto = orto;
-		View view = inflate(context, R.layout.component_orto_border, this);
-		ortoView = view.findViewById(R.id.component_orto_border);
+		View view = inflate(context, R.layout.component_aiuola, this);
+		ortoView = view.findViewById(R.id.component_aiuola);
 		setSize(size);
 	}
 	
@@ -34,7 +34,7 @@ public class OrtoView extends LinearLayout {
 		params.width = size.x;
 		params.height = size.y;
 		ortoView.setLayoutParams(params);
-		View ortoBkg = ortoView.findViewById(R.id.component_orto_border_background);
+		FrameLayout ortoBkg = ortoView.findViewById(R.id.component_aiuola_background);
 		GradientDrawable bkg = (GradientDrawable) ortoBkg.getBackground();
 		bkg.setColor(MaterialColors.harmonizeWithPrimary(context, Color.parseColor("#eeddcc")));  // FIXME colors
 		bkg.setStroke(weight, MaterialColors.harmonizeWithPrimary(context, Color.parseColor("#603325")));  // FIXME colors

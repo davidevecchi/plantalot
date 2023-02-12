@@ -9,6 +9,7 @@
 	android:layout_height="wrap_content"
 	android:fitsSystemWindows="true"
 	tools:showIn="@layout/ortaggio_fragment"
+	android:stateListAnimator="@null"
 	>
 	
 	<com.google.android.material.appbar.CollapsingToolbarLayout
@@ -35,7 +36,7 @@
 		
 		</com.google.android.material.appbar.MaterialToolbar>
 		
-		<Space
+		<View
 			android:id="@+id/image_collapsed_target"
 			android:layout_width="?attr/actionBarSize"
 			android:layout_height="?attr/actionBarSize"
@@ -43,7 +44,7 @@
 			android:layout_gravity="end"
 			/>
 		
-		<Space
+		<View
 			android:id="@+id/title_collapsed_target"
 			android:layout_width="match_parent"
 			android:layout_height="?attr/actionBarSize"

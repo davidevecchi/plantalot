@@ -60,7 +60,6 @@ public class OrtaggioFragment extends Fragment {
 	private LinkedList<String> dropdownItems;
 	private Giardino giardino;
 	private Carriola carriola;
-	
 	private View view;
 	private final Map<String, Varieta> ortaggioDocuments = new HashMap<>();
 	

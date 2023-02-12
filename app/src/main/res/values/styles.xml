@@ -1,219 +1,218 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-	
-	<style name="Theme.App" parent="Material3Theme">
-		<!--		<item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
-		<!--		<item name="colorPrimaryDark">?attr/colorPrimaryContainer</item>-->
-		<item name="android:popupMenuStyle">@style/Widget.App.PopupMenu</item>
-		<item name="android:listPopupWindowStyle">@style/Widget.App.Dropdown.Popup</item>
-  <item name="chipStyle">@style/Widget.App.Chip.Filter</item>
-		<!--		<item name="popupMenuBackground">@drawable/bkg_popupmenu</item>-->
-		
-		<!--		<item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>-->
-	</style>
-	
-	
-	<style name="Widget.App.Chip.Filter" parent="Widget.Material3.Chip.Assist">
-		<item name="chipBackgroundColor">@color/chip_background_color</item>
-		<item name="android:textColor">@color/chip_text_color</item>
-	</style>
-	
-	
-	<style name="TextAppearance.None" parent="">
-		<item name="android:textSize">0sp</item>
-		<item name="lineHeight">0sp</item>
-		<item name="android:padding">0dp</item>
-		<item name="android:layout_margin">0dp</item>
-	</style>
-	
-	<style name="TextAppearance.Short" parent="">
-		<item name="lineHeight">10sp</item>
-	</style>
-	
-	<style name="Widget.App.Card.FullWidth" parent="Widget.Material3.CardView.Outlined">
-		<item name="strokeWidth">0dp</item>
-		<item name="cardCornerRadius">0dp</item>
-		<item name="android:layout_width">match_parent</item>
-		<item name="android:layout_height">wrap_content</item>
-		<item name="android:layout_marginTop">4dp</item>
-		<item name="android:layout_marginBottom">4dp</item>
-	</style>
-	
-	
-	<style name="Widget.App.Calendar.Month" parent="Widget.Material3.Button.OutlinedButton">
-		<item name="android:padding">0dp</item>
-		<item name="android:insetTop">0dp</item>
-		<item name="android:insetBottom">0dp</item>
-		<item name="android:checkable">true</item>
-		<item name="android:clickable">false</item>
-		<item name="android:focusable">false</item>
-		<item name="cornerRadius">8dp</item>
-	</style>
-	
-	<style name="ThemeOverlay.App.Card.Ortaggio.Bad" parent="">
-		<item name="colorPrimary">?attr/colorError</item>
-	</style>
-	
-	
-	<style name="Widget.App.Dropdown.Popup" parent="Widget.Material3.PopupMenu.ListPopupWindow">
-		<!--		<item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>-->
-		<!--		<item name="android:textAppearance">@style/TextAppearance.App.Button</item>-->
-		<!--		<item name="shapeAppearance">@style/ShapeAppearance.App.Squared</item>-->
-		<item name="android:backgroundTint">?attr/colorSecondary</item>
-	</style>
-	
-	
-	<style name="Widget.App.Dropdown.Button" parent="Widget.Material3.Button">
-		<!--		<item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>-->
-		<!--		<item name="android:textAppearance">@style/TextAppearance.App.Button</item>-->
-		<item name="shapeAppearance">@style/ShapeAppearance.App.Squared</item>
-	</style>
-	
-	<style name="ThemeOverlay.App.Button" parent="">
-		<!--		<item name="colorPrimary">@color/shrine_pink_100</item>-->
-		<!--		<item name="colorOnPrimary">@color/shrine_pink_900</item>-->
-	</style>
-	
-	<style name="ShapeAppearance.App.Squared" parent="ShapeAppearance.Material3.SmallComponent">
-		<item name="cornerFamily">cut</item>
-		<item name="cornerSize">0dp</item>
-		<item name="cornerRadius">100dp</item>
-	</style>
-	
-	
-	<style name="Widget.App.PopupMenu" parent="Widget.Material3.PopupMenu">
-		<item name="android:popupBackground">@drawable/bkg_popupmenu</item>
-		<item name="android:dropDownHorizontalOffset">8dp</item>
-		<!--    <item name="android:dropDownVerticalOffset">4dp</item>-->
-	</style>
-	
-	
-	<!-- BACK LAYER -->
-	
-	<!-- TOOLBAR -->
-	
-	<!--	&lt;!&ndash; toolbarNavigationButtonStyle &ndash;&gt;-->
-	<!--	<style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">-->
-	<!--		<item name="tint">?attr/colorOnSecondaryContainer</item>-->
-	<!--	</style>-->
-	
-	<style name="ThemeOverlay.App.BackLayer" parent="Theme.App">
-		<item name="colorSurface">?attr/colorSecondaryContainer</item>
-		<item name="colorOnSurface">?attr/colorOnPrimaryContainer</item>
-	</style>
-	
-	<style name="ThemeOverlay.App.Button.TextButton.BackLayer" parent="ThemeOverlay.App.BackLayer">
-		<item name="colorPrimary">?attr/colorOnSurface</item>
-	</style>
-	
-	<style name="Widget.App.Backdrop.BackLayer" parent="">
-		<item name="android:theme">@style/ThemeOverlay.App.BackLayer</item>
-	</style>
-	
-	<style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
-		<item name="titleCentered">true</item>
-		<item name="subtitleCentered">true</item>
-		<item name="titleTextAppearance">@style/TextAppearance.App.Toolbar</item>
-	</style>
-	
-	<style name="Widget.App.Toolbar.BackLayer" parent="Widget.App.Toolbar">
-		<item name="android:theme">@style/ThemeOverlay.App.BackLayer</item>
-		<item name="android:paddingStart">0dp</item>
-		<item name="android:paddingEnd">4dp</item>
-	</style>
-	
-	<style name="Widget.App.Toolbar.Carriola" parent="Widget.Material3.Toolbar">
-		<item name="titleTextAppearance">@style/TextAppearance.App.Toolbar</item>
-		<item name="android:paddingStart">0dp</item>
-		<item name="android:paddingEnd">4dp</item>
-	</style>
-	
-	
-	<style name="TextAppearance.App.Toolbar" parent="TextAppearance.MaterialComponents.Button">
-		<item name="android:textSize">16sp</item>
-	</style>
-	
-	<style name="TextAppearance.App.TextButton.BackLayer" parent="TextAppearance.MaterialComponents.Button">
-		<item name="android:textSize">14sp</item>
-	</style>
-	
-	
-	<!-- BUTTONS -->
-	
-	<style name="Widget.App.Button.TonalButton.IconOnly" parent="Widget.Material3.Button.TonalButton">
-		<item name="android:insetTop">0dp</item>
-		<item name="android:insetBottom">0dp</item>
-		<item name="iconGravity">textStart</item>
-		<item name="iconPadding">0dp</item>
-	</style>
-	
-	<style name="Widget.App.Button.ElevatedButton.IconOnly" parent="Widget.Material3.Button.TonalButton">
-		<item name="android:insetTop">0dp</item>
-		<item name="android:insetBottom">0dp</item>
-		<item name="iconGravity">textStart</item>
-		<item name="iconPadding">0dp</item>
-	</style>
-	
-	<style name="Widget.App.Button.TextButton.IconOnly.BackLayer" parent="Widget.Material3.Button.TextButton">
-		<item name="android:insetTop">0dp</item>
-		<item name="android:insetBottom">0dp</item>
-		<item name="iconGravity">textStart</item>
-		<item name="iconPadding">0dp</item>
-		<item name="android:theme">@style/ThemeOverlay.App.Button.TextButton.BackLayer</item>
-	</style>
-	
-	<style name="Widget.App.Button.TextButton.BackLayer" parent="Widget.Material3.Button.TextButton">
-		<item name="android:theme">@style/ThemeOverlay.App.Button.TextButton.BackLayer</item>
-		<item name="android:textAppearance">@style/TextAppearance.App.TextButton.BackLayer</item>
-		<item name="android:paddingStart">16dp</item>
-		<item name="android:paddingEnd">16dp</item>
-		<item name="android:layout_gravity">center</item>
-	</style>
-	
-	<!--	<style name="Widget.App.Button.IconOnly.BackLayer" parent="Widget.App.Button.TextButton.IconOnly">-->
-	<!--		<item name="android:theme">@style/ThemeOverlay.App.Button.TextButton.BackLayer</item>-->
-	<!--	</style>-->
-	
-	
-	<!-- FRONT LAYER-->
-	
-	<style name="Widget.App.Button.TextButton.FrontLayer" parent="Widget.Material3.Button.TextButton">
-		<item name="android:textColor">?attr/colorPrimary</item>
-		<item name="iconTint">?attr/colorPrimary</item>
-	</style>
-	
-	<style name="Widget.App.Backdrop.FrontLayer" parent="">
-		<item name="android:background">@drawable/bkg_backdrop_frontlayer</item>
-		<item name="android:backgroundTint">?attr/colorSurface</item>
-		<item name="android:elevation">16dp</item>
-	</style>
-	
-	<style name="Widget.App.Button.NavButton" parent="Widget.Material3.Button.TonalButton">
-		<item name="android:insetTop">0dp</item>
-		<item name="android:insetBottom">0dp</item>
-		<item name="iconPadding">0dp</item>
-		<item name="iconGravity">textStart</item>
-		<item name="iconSize">24dp</item>
-		<item name="iconTint">?attr/colorPrimary</item>
-		<item name="android:textAppearance">@style/TextAppearance.App.Toolbar</item>
-		<item name="android:clickable">false</item>
-		<item name="android:focusable">false</item>
-		<item name="rippleColor">@color/none</item>
-		<item name="android:theme">@style/ThemeOverlay.App.Tetriary</item>
-	</style>
-	
-	<style name="ThemeOverlay.App.Tetriary" parent="Theme.App">
-		<item name="colorPrimary">?attr/colorTertiary</item>
-		<item name="colorPrimaryVariant">?attr/colorTertiary</item>
-		<item name="colorPrimaryContainer">?attr/colorTertiaryContainer</item>
-		<item name="colorSecondary">?attr/colorTertiary</item>
-		<item name="colorSecondaryVariant">?attr/colorTertiary</item>
-		<item name="colorSecondaryContainer">?attr/colorTertiaryContainer</item>
-	</style>
-	
-	<style name="Widget.App.Chip.Suggestion" parent="Widget.Material3.Chip.Suggestion">
-		<item name="android:checked">true</item>
-		<item name="android:clickable">false</item>
-		<item name="rippleColor">@color/none</item>
-	</style>
+    
+    <style name="Theme.App" parent="Material3Theme">
+        <!--		<item name="android:windowLightStatusBar" tools:targetApi="m">true</item>-->
+        <!--		<item name="colorPrimaryDark">?attr/colorPrimaryContainer</item>-->
+        <item name="android:popupMenuStyle">@style/Widget.App.PopupMenu</item>
+        <item name="android:listPopupWindowStyle">@style/Widget.App.Dropdown.Popup</item>
+<!--        <item name="chipStyle">@style/Widget.App.Chip.Filter</item>-->
+        <!--		<item name="popupMenuBackground">@drawable/bkg_popupmenu</item>-->
+        <!--		<item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>-->
+    </style>
+    
+    
+    <style name="Widget.App.Chip.Filter" parent="Widget.Material3.Chip.Assist">
+        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="android:textColor">@color/chip_text_color</item>
+    </style>
+    
+    
+    <style name="TextAppearance.None" parent="">
+        <item name="android:textSize">0sp</item>
+        <item name="lineHeight">0sp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+    
+    <style name="TextAppearance.Short" parent="">
+        <item name="lineHeight">10sp</item>
+    </style>
+    
+    <style name="Widget.App.Card.FullWidth" parent="Widget.Material3.CardView.Outlined">
+        <item name="strokeWidth">0dp</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">4dp</item>
+        <item name="android:layout_marginBottom">4dp</item>
+    </style>
+    
+    
+    <style name="Widget.App.Calendar.Month" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="android:padding">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:checkable">true</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="cornerRadius">8dp</item>
+    </style>
+    
+    <style name="ThemeOverlay.App.Card.Ortaggio.Bad" parent="">
+        <item name="colorPrimary">?attr/colorError</item>
+    </style>
+    
+    
+    <style name="Widget.App.Dropdown.Popup" parent="Widget.Material3.PopupMenu.ListPopupWindow">
+        <!--		<item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>-->
+        <!--		<item name="android:textAppearance">@style/TextAppearance.App.Button</item>-->
+        <!--		<item name="shapeAppearance">@style/ShapeAppearance.App.Squared</item>-->
+        <item name="android:backgroundTint">?attr/colorSecondary</item>
+    </style>
+    
+    
+    <style name="Widget.App.Dropdown.Button" parent="Widget.Material3.Button">
+        <!--		<item name="materialThemeOverlay">@style/ThemeOverlay.App.Button</item>-->
+        <!--		<item name="android:textAppearance">@style/TextAppearance.App.Button</item>-->
+        <item name="shapeAppearance">@style/ShapeAppearance.App.Squared</item>
+    </style>
+    
+    <style name="ThemeOverlay.App.Button" parent="">
+        <!--		<item name="colorPrimary">@color/shrine_pink_100</item>-->
+        <!--		<item name="colorOnPrimary">@color/shrine_pink_900</item>-->
+    </style>
+    
+    <style name="ShapeAppearance.App.Squared" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">0dp</item>
+        <item name="cornerRadius">100dp</item>
+    </style>
+    
+    
+    <style name="Widget.App.PopupMenu" parent="Widget.Material3.PopupMenu">
+        <item name="android:popupBackground">@drawable/bkg_popupmenu</item>
+        <item name="android:dropDownHorizontalOffset">8dp</item>
+        <!--    <item name="android:dropDownVerticalOffset">4dp</item>-->
+    </style>
+    
+    
+    <!-- BACK LAYER -->
+    
+    <!-- TOOLBAR -->
+    
+    <!--	&lt;!&ndash; toolbarNavigationButtonStyle &ndash;&gt;-->
+    <!--	<style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">-->
+    <!--		<item name="tint">?attr/colorOnSecondaryContainer</item>-->
+    <!--	</style>-->
+    
+    <style name="ThemeOverlay.App.BackLayer" parent="Theme.App">
+        <item name="colorSurface">?attr/colorSecondaryContainer</item>
+        <item name="colorOnSurface">?attr/colorOnPrimaryContainer</item>
+    </style>
+    
+    <style name="ThemeOverlay.App.Button.TextButton.BackLayer" parent="ThemeOverlay.App.BackLayer">
+        <item name="colorPrimary">?attr/colorOnSurface</item>
+    </style>
+    
+    <style name="Widget.App.Backdrop.BackLayer" parent="">
+        <item name="android:theme">@style/ThemeOverlay.App.BackLayer</item>
+    </style>
+    
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleCentered">true</item>
+        <item name="subtitleCentered">true</item>
+        <item name="titleTextAppearance">@style/TextAppearance.App.Toolbar</item>
+    </style>
+    
+    <style name="Widget.App.Toolbar.BackLayer" parent="Widget.App.Toolbar">
+        <item name="android:theme">@style/ThemeOverlay.App.BackLayer</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
+    
+    <style name="Widget.App.Toolbar.Carriola" parent="Widget.Material3.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.App.Toolbar</item>
+        <item name="android:paddingStart">0dp</item>
+        <item name="android:paddingEnd">4dp</item>
+    </style>
+    
+    
+    <style name="TextAppearance.App.Toolbar" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">16sp</item>
+    </style>
+    
+    <style name="TextAppearance.App.TextButton.BackLayer" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textSize">14sp</item>
+    </style>
+    
+    
+    <!-- BUTTONS -->
+    
+    <style name="Widget.App.Button.TonalButton.IconOnly" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+    
+    <style name="Widget.App.Button.ElevatedButton.IconOnly" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+    
+    <style name="Widget.App.Button.TextButton.IconOnly.BackLayer" parent="Widget.Material3.Button.TextButton">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="android:theme">@style/ThemeOverlay.App.Button.TextButton.BackLayer</item>
+    </style>
+    
+    <style name="Widget.App.Button.TextButton.BackLayer" parent="Widget.Material3.Button.TextButton">
+        <item name="android:theme">@style/ThemeOverlay.App.Button.TextButton.BackLayer</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.TextButton.BackLayer</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+    
+    <!--	<style name="Widget.App.Button.IconOnly.BackLayer" parent="Widget.App.Button.TextButton.IconOnly">-->
+    <!--		<item name="android:theme">@style/ThemeOverlay.App.Button.TextButton.BackLayer</item>-->
+    <!--	</style>-->
+    
+    
+    <!-- FRONT LAYER-->
+    
+    <style name="Widget.App.Button.TextButton.FrontLayer" parent="Widget.Material3.Button.TextButton">
+        <item name="android:textColor">?attr/colorPrimary</item>
+        <item name="iconTint">?attr/colorPrimary</item>
+    </style>
+    
+    <style name="Widget.App.Backdrop.FrontLayer" parent="">
+        <item name="android:background">@drawable/bkg_backdrop_frontlayer</item>
+        <item name="android:backgroundTint">?attr/colorSurface</item>
+        <item name="android:elevation">16dp</item>
+    </style>
+    
+    <style name="Widget.App.Button.NavButton" parent="Widget.Material3.Button.TonalButton">
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconSize">24dp</item>
+        <item name="iconTint">?attr/colorPrimary</item>
+        <item name="android:textAppearance">@style/TextAppearance.App.Toolbar</item>
+        <item name="android:clickable">false</item>
+        <item name="android:focusable">false</item>
+        <item name="rippleColor">@color/none</item>
+        <item name="android:theme">@style/ThemeOverlay.App.Tetriary</item>
+    </style>
+    
+    <style name="ThemeOverlay.App.Tetriary" parent="Theme.App">
+        <item name="colorPrimary">?attr/colorTertiary</item>
+        <item name="colorPrimaryVariant">?attr/colorTertiary</item>
+        <item name="colorPrimaryContainer">?attr/colorTertiaryContainer</item>
+        <item name="colorSecondary">?attr/colorTertiary</item>
+        <item name="colorSecondaryVariant">?attr/colorTertiary</item>
+        <item name="colorSecondaryContainer">?attr/colorTertiaryContainer</item>
+    </style>
+    
+    <style name="Widget.App.Chip.Suggestion" parent="Widget.Material3.Chip.Suggestion">
+        <item name="android:checked">true</item>
+        <item name="android:clickable">false</item>
+        <item name="rippleColor">@color/none</item>
+    </style>
 
 </resources>

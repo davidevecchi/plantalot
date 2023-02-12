@@ -30,7 +30,7 @@ public class AppbarCollapsingTitle extends AppbarCollapsingBehavior {
 		appBarLayout.setBackgroundColor(ColorUtils.attrColor(
 				com.google.android.material.R.attr.colorPrimary,
 				context,
-				5 + (int) (11 * factor)
+				5 + (int) (11 * factor)  // fixme
 		));
 		
 		float alphaOffset = 0.5f;

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,14 +59,15 @@ public class HomeGiardiniAdapter extends RecyclerView.Adapter<HomeGiardiniAdapte
 		viewHolder.giardinoBtn.setText(nomeGiardino);
 		
 		viewHolder.giardinoBtn.setOnClickListener(v -> {
-			String nomeGiardinoCorrente = viewHolder.giardinoBtn.getText().toString();
-			app.user.setNome_giardino_corrente(nomeGiardinoCorrente);
-			DbUsers.updateNomeGiardinoCorrente(nomeGiardinoCorrente);
+			String nomeGiardinoCliccato = viewHolder.giardinoBtn.getText().toString();
+			if (!app.user.getNome_giardino_corrente().equals(nomeGiardinoCliccato)) {
+				app.user.setNome_giardino_corrente(nomeGiardinoCliccato);
+				DbUsers.updateNomeGiardinoCorrente(nomeGiardinoCliccato);
+				homeFragment.setupContent();  // FIXME !?
+			}
 			Toolbar toolbar = fragView.findViewById(R.id.home_bl_toolbar);
 			ImageButton imgButton = Utils.getToolbarNavigationButton(toolbar);
 			(new Handler()).postDelayed(imgButton::performClick, 100);
-			if (!nomeGiardino.equals(nomeGiardinoCorrente))
-				homeFragment.setupContent();  // FIXME !?
 		});
 		
 		viewHolder.editBtn.setOnClickListener(v -> {

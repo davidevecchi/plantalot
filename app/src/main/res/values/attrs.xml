@@ -10,5 +10,7 @@
 	</declare-styleable>
 	
    <attr name="colorSecondaryContainer" format="reference" />
-
+	
+		<declare-styleable name="PieChartView"/>
+	
 </resources>

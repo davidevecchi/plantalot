@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/piechart_with_legend"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:orientation="horizontal"
+    android:weightSum="2"
+    android:layout_gravity="center_vertical"
+    >
+    
+    <org.eazegraph.lib.charts.PieChart
+        android:id="@+id/piechart"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:layout_weight="1.1"
+        app:egAnimationTime="1000"
+        app:egInnerPaddingColor="#fff6f6e9"
+        />
+    
+    <androidx.core.widget.NestedScrollView
+        android:layout_height="wrap_content"
+        android:overScrollMode="ifContentScrolls"
+        android:layout_width="0dp"
+        android:layout_weight="0.9"
+        android:layout_gravity="center_vertical"
+        android:paddingVertical="8dp"
+        android:paddingHorizontal="16dp"
+        >
+        
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chart_legend_recycler"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            tools:itemCount="5"
+            tools:listitem="@layout/chart_legend_item"
+            android:overScrollMode="ifContentScrolls"
+            />
+    
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

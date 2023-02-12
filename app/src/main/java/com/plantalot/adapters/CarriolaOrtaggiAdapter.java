@@ -3,7 +3,6 @@ package com.plantalot.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.Pair;
 import android.view.LayoutInflater;
@@ -42,12 +41,15 @@ public class CarriolaOrtaggiAdapter extends RecyclerView.Adapter<CarriolaOrtaggi
 	private final Giardino giardino;
 	private final Carriola carriola;
 	private final CarriolaFragment fragment;
+
+	private final boolean isOrto;
 	
-	public CarriolaOrtaggiAdapter(@NonNull List<Pair<String, List<Pair<Varieta, Integer>>>> data, Giardino giardino, CarriolaFragment fragment) {
+	public CarriolaOrtaggiAdapter(@NonNull List<Pair<String, List<Pair<Varieta, Integer>>>> data, Carriola carriola, Giardino giardino, Boolean isOrto, CarriolaFragment fragment) {
 		this.mData = data;
 		this.giardino = giardino;
-		this.carriola = giardino.getCarriola();
+		this.carriola = carriola;
 		this.fragment = fragment;
+		this.isOrto = isOrto;
 	}
 	
 	@NonNull
@@ -64,16 +66,15 @@ public class CarriolaOrtaggiAdapter extends RecyclerView.Adapter<CarriolaOrtaggi
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 		String ortaggio = mData.get(position).first;
-		
-		Drawable mCardHeaderBkg = viewHolder.mCardHeader.getBackground();
-		mCardHeaderBkg.setTint(ColorUtils.alphaColor(DbPlants.getIconColor(ortaggio), 35));
-		viewHolder.mCardHeader.setBackground(mCardHeaderBkg);
-		viewHolder.mBackground.setBackgroundColor(ColorUtils.alphaColor(DbPlants.getIconColor(ortaggio), 25));
+		int color = DbPlants.getIconColor(ortaggio);
+
+		viewHolder.mCardHeader.setBackgroundColor(ColorUtils.alphaColor(color, 50));
+		viewHolder.mBackground.setBackgroundColor(ColorUtils.alphaColor(color, 30));
 		viewHolder.mImage.setImageResource(DbPlants.getImageId(ortaggio));
 		viewHolder.mTvName.setText(ortaggio);
 		updateCount(viewHolder.mTvInfo, ortaggio);
 		
-		CarriolaVarietaAdapter carriolaVarietaAdapter = new CarriolaVarietaAdapter(mData.get(position).second, giardino, fragment, this);
+		CarriolaVarietaAdapter carriolaVarietaAdapter = new CarriolaVarietaAdapter(mData.get(position).second, carriola, giardino, isOrto, fragment, this);
 		viewHolder.mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
 		viewHolder.mRecyclerView.setAdapter(carriolaVarietaAdapter);
 		
@@ -94,8 +95,9 @@ public class CarriolaOrtaggiAdapter extends RecyclerView.Adapter<CarriolaOrtaggi
 		int nVarieta = carriola.countVarieta(ortaggio);
 		int nPiante = carriola.countPiante(ortaggio);
 		tv.setText(res.getQuantityString(R.plurals.n_varieta, nVarieta, nVarieta) + ", " + res.getQuantityString(R.plurals.n_piante, nPiante, nPiante));
+		fragment.updatePieChart();
 	}
-	
+
 	@Override
 	public int getItemCount() {
 		return mData.size();

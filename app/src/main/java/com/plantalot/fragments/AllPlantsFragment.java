@@ -88,6 +88,9 @@ public class AllPlantsFragment extends Fragment {
 	private final HashMap<String, List<Pair<Integer, Integer>>> ranges = new HashMap<>();
 	private final List<String> OMBRA = new ArrayList<>(Arrays.asList(
 			"Consigliata", "Tollerata", "Tollerata in estate", "Non tollerata"));
+
+	private final List<String> IMMAGINI = new ArrayList<>(Collections.singletonList(
+			"Escludi ortaggi senza immagine"));
 	private final List<String> MONTHS = new ArrayList<>(Arrays.asList(
 			"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"));
 	
@@ -99,7 +102,8 @@ public class AllPlantsFragment extends Fragment {
 			new Pair<>(DbPlants.VARIETA_DISTANZE_PIANTE, new ArrayList<>()),
 			new Pair<>(DbPlants.VARIETA_DISTANZE_FILE, new ArrayList<>()),
 			new Pair<>(DbPlants.VARIETA_ALTRO_PACK, new ArrayList<>()),
-			new Pair<>(DbPlants.VARIETA_ALTRO_TOLLERA_MEZZOMBRA, OMBRA)
+			new Pair<>(DbPlants.VARIETA_ALTRO_TOLLERA_MEZZOMBRA, OMBRA),
+			new Pair<>(DbPlants.VARIETA_CLASSIFICAZIONE_ORTAGGIO, IMMAGINI)
 //			new Pair<>(CHIP_ROTAZIONE, Arrays.asList("2", "3", "4", "5", "7")),          // TODO
 //			new Pair<>("Giardini e preferiti", Arrays.asList("Tutto", "", "Preferiti"))  // TODO
 	));
@@ -123,6 +127,7 @@ public class AllPlantsFragment extends Fragment {
 		titles.put(DbPlants.VARIETA_DISTANZE_FILE, "Distanza fra file");
 		titles.put(DbPlants.VARIETA_ALTRO_PACK, "Piante per pack");
 		titles.put(DbPlants.VARIETA_ALTRO_TOLLERA_MEZZOMBRA, "Mezz'ombra");
+		titles.put(DbPlants.VARIETA_CLASSIFICAZIONE_ORTAGGIO, "Immagine di anteprima");
 //.		titles.put(DbPlants.ROTAZIONE, "Anni di rotazione");  // TODO
 		
 		ranges.put(DbPlants.VARIETA_DISTANZE_PIANTE, new ArrayList<>(Arrays.asList(
@@ -178,6 +183,7 @@ public class AllPlantsFragment extends Fragment {
 						chip.second.add(pair.first.toString());
 					}
 					break;
+
 			}
 		}
 		
@@ -195,6 +201,13 @@ public class AllPlantsFragment extends Fragment {
 			activeFilters.put(chip.first, new HashSet<>());
 		}
 		activeFilters.get(RAGGRUPPA).add(DbPlants.VARIETA_TASSONOMIA_FAMIGLIA);
+	}
+
+	@Override
+	public void onResume() {
+		super.onResume();
+		isBackdropShown = false;
+		isSearchShown = false;
 	}
 	
 	@RequiresApi(api = Build.VERSION_CODES.N)
@@ -307,6 +320,15 @@ public class AllPlantsFragment extends Fragment {
 	
 	@RequiresApi(api = Build.VERSION_CODES.N)
 	private void filterOrtaggi(String minField) {
+
+		String field_ = DbPlants.VARIETA_CLASSIFICAZIONE_ORTAGGIO;
+		if (!activeFilters.get(field_).isEmpty()) {
+			filteredOrtaggi = filteredOrtaggi.stream()
+					.filter(o -> !DbPlants.hasDefaultImage(o.getClassificazione_ortaggio()))
+					.collect(Collectors.toList());
+		}
+
+
 		
 		for (String field : new ArrayList<>(Arrays.asList(
 				DbPlants.VARIETA_TASSONOMIA_FAMIGLIA,

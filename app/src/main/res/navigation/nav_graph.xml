@@ -29,6 +29,20 @@
 		</action>
 		
 		<action
+			android:id="@+id/action_goto_orto"
+			app:destination="@id/ortoFragment"
+			app:launchSingleTop="false"
+			>
+			
+			<argument
+				android:name="nomeOrto"
+				android:defaultValue=""
+				app:argType="string"
+				/>
+		
+		</action>
+		
+		<action
 			android:id="@+id/action_goto_all_plants"
 			app:destination="@id/allPlantsFragment"
 			/>
@@ -97,6 +111,47 @@
 	</fragment>
 	
 	<fragment
+		android:id="@+id/ortoFragment"
+		android:name="com.plantalot.fragments.OrtoFragment"
+		android:label="OrtoFragment"
+		tools:layout="@layout/orto_fragment"
+		>
+		
+		<action
+			android:id="@+id/action_goto_carriola"
+			app:destination="@id/carriolaFragment"
+			/>
+		
+		<action
+			android:id="@+id/action_goto_home_from_orto"
+			app:destination="@id/homeFragment"
+			app:popUpTo="@id/homeFragment"
+			app:popUpToInclusive="true"
+			/>
+		
+		<action
+			android:id="@+id/action_goto_ortaggio"
+			app:destination="@id/ortaggioFragment"
+			app:launchSingleTop="false"
+			>
+			
+			<argument
+				android:name="ortaggio"
+				android:defaultValue=""
+				app:argType="string"
+				/>
+		
+		</action>
+		
+		
+		<action
+			android:id="@+id/action_goto_nuovo_orto"
+			app:destination="@id/nuovoOrtoFragment"
+			/>
+	
+	</fragment>
+	
+	<fragment
 		android:id="@+id/nuovoGiardinoFragment"
 		android:name="com.plantalot.fragments.NuovoGiardinoFragment"
 		android:label="NuovoGiardinoFragment"
@@ -123,7 +178,22 @@
 			app:popUpTo="@id/homeFragment"
 			app:popUpToInclusive="true"
 			/>
-	
+		
+		
+		<action
+			android:id="@+id/action_goto_orto"
+			app:destination="@id/ortoFragment"
+			app:launchSingleTop="false"
+			>
+			
+			<argument
+				android:name="nomeOrto"
+				android:defaultValue=""
+				app:argType="string"
+				/>
+		
+		</action>
+		
 	</fragment>
 	
 	<fragment
@@ -143,7 +213,32 @@
 			app:destination="@id/homeFragment"
 			app:popUpTo="@id/homeFragment"
 			app:popUpToInclusive="true" />
+		<action
+			android:id="@+id/action_goto_orto_from_carriola"
+			app:destination="@id/ortoFragment"
+			app:popUpTo="@id/ortoFragment"
+			app:popUpToInclusive="true" />
 
 	</fragment>
+
+<!--	<fragment-->
+<!--		android:id="@+id/ortoEditFragment"-->
+<!--		android:name="com.plantalot.fragments._OrtoEditFragment"-->
+<!--		android:label="OrtoEditFragment"-->
+<!--		tools:layout="@layout/carriola_fragment"-->
+<!--		>-->
+<!--		-->
+<!--		<action-->
+<!--			android:id="@+id/action_goto_ortaggio"-->
+<!--			app:destination="@id/ortaggioFragment"-->
+<!--			app:launchSingleTop="false"-->
+<!--			/>-->
+<!--		<action-->
+<!--			android:id="@+id/action_goto_orto_from_edit"-->
+<!--			app:destination="@id/ortoFragment"-->
+<!--			app:popUpTo="@id/ortoFragment"-->
+<!--			app:popUpToInclusive="true" />-->
+
+<!--	</fragment>-->
 
 </navigation>

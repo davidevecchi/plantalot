@@ -9,7 +9,6 @@
 	android:layout_marginVertical="6dp"
 	android:backgroundTint="#fff"
 	>
-	<!--	tools:showIn="@layout/carriola_fragment"-->
 	
 	<LinearLayout
 		android:id="@+id/carriola_ortaggio_background"
@@ -34,7 +33,6 @@
 				android:paddingHorizontal="16dp"
 				android:paddingVertical="8dp"
 				>
-				<!--				android:background="@drawable/bkg_card_media"-->
 				
 				<ImageView
 					android:id="@+id/carriola_ortaggio_image"
@@ -142,7 +140,7 @@
 			android:nestedScrollingEnabled="false"
 			android:orientation="vertical"
 			android:overScrollMode="never"
-			android:paddingStart="18dp"
+			android:paddingStart="12dp"
 			android:paddingEnd="16dp"
 			android:paddingVertical="8dp"
 			tools:itemCount="2"

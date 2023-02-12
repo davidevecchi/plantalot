@@ -1,5 +1,7 @@
 package com.plantalot.classes;
 
+import android.util.Log;
+
 import com.plantalot.database.DbUsers;
 
 import java.io.Serializable;
@@ -86,13 +88,15 @@ public class User implements Serializable {
 	}
 	
 	public String getNome_giardino_corrente() {
-		if (nome_giardino_corrente == null) return nome_giardino_corrente = getFirstGiardinoName();
-		return nome_giardino_corrente;
+		if (this.nome_giardino_corrente == null) return this.nome_giardino_corrente = getFirstGiardinoName();
+		return this.nome_giardino_corrente;
 	}
 	
 	public void setNome_giardino_corrente(String nomeGiardino) {
 		this.nome_giardino_corrente = nomeGiardino;
 		DbUsers.updateNomeGiardinoCorrente(nomeGiardino);
+
+		Log.d(TAG, "Updating giardino " + nomeGiardino);
 	}
 	
 	public boolean editNomeGiardino(String oldName, String newName) {

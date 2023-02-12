@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item
+			android:id="@+id/orto_menu_opt1"
+			android:icon="@drawable/ic_round_edit_24"
+			android:title="Modifica orto" />
+	<item
+			android:id="@+id/orto_menu_opt2"
+			android:icon="@drawable/ic_round_wheelbarrow_24"
+			android:title="Modifica piante" />
+	<item
+			android:id="@+id/orto_menu_opt3"
+			android:icon="@drawable/ic_round_delete_24"
+			android:title="Elimina orto" />
+</menu>
