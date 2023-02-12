@@ -4,15 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/home_backdrop_frontlayer"
-    style="@style/Widget.App.Backdrop.FrontLayer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
     android:overScrollMode="never"
     android:scrollbars="none"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:showIn="@layout/home_fragment"
     >
+<!--    app:layout_behavior="@string/appbar_scrolling_view_behavior"-->
+<!--    style="@style/Widget.App.Backdrop.FrontLayer"-->
     
     <ImageView
         android:id="@+id/home_fl_arrow_hint"
@@ -39,8 +38,10 @@
         android:visibility="gone"
         />
     
+<!--        style="@style/Widget.App.Backdrop.FrontLayer"-->
     <androidx.core.widget.NestedScrollView
-        style="@style/Widget.App.Backdrop.FrontLayer"
+        android:background="?attr/colorSurface"
+        android:elevation="16dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:overScrollMode="never"
@@ -63,9 +64,13 @@
                 android:id="@+id/home_fl_title_giardino"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingVertical="24dp"
-                tools:text="Nome giardino"
+                android:paddingTop="48dp"
+                android:paddingBottom="24dp"
+                android:text="{ Plantalot }"
+                android:fontFamily="@font/alley_garden"
                 android:textAppearance="?attr/textAppearanceHeadline5"
+                android:textSize="48sp"
+                android:textColor="?attr/colorSecondaryVariant"
                 />
             
             <!-- FIXME width -->
@@ -95,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 tools:text="Instructions"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 android:lineSpacingExtra="5sp"
                 />
             

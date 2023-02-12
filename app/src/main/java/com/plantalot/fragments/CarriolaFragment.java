@@ -157,7 +157,10 @@ public class CarriolaFragment extends Fragment {
 
     private void setCofirmBtnText() {
         String pianta_in = "Pianta in ";
-        if (ortiSet.size() == 1) {
+        if (ortiSet.isEmpty()) {
+            pianta_in = "Non hai orti in cui piantare";
+            confirmBtn.setEnabled(giardino.getOrti().size() > 0);
+        } else if (ortiSet.size() == 1) {
             pianta_in += ortiSet.iterator().next();
         } else if (ortiSet.size() == giardino.ortiList().size()) {
             pianta_in += "tutti gli orti";
@@ -197,7 +200,6 @@ public class CarriolaFragment extends Fragment {
             ortaggiRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
             CarriolaOrtaggiAdapter carriolaOrtaggiAdapter = new CarriolaOrtaggiAdapter(carriolaList, carriolaNew, giardino, isOrto, this);
             ortaggiRecyclerView.setAdapter(carriolaOrtaggiAdapter);
-            confirmBtn.setEnabled(giardino.getOrti().size() > 0);
         });
 
         confirmBtn.setOnClickListener(v -> {

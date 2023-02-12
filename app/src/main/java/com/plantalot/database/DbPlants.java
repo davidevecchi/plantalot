@@ -65,7 +65,7 @@ public class DbPlants {
 
         Resources res = activity.getResources();
         defaultImageId = res.getIdentifier(
-                "plant_mushroom_3944308".split("\\.")[0],
+                "plant_almond_3944283".split("\\.")[0],
                 "mipmap",
                 activity.getPackageName());
 
