@@ -10,7 +10,7 @@
 	android:paddingHorizontal="24dp"
 	>
 	
-	<!-- TODO add carriola / preferiti -->
+	<!-- TODO add plantsCounter / preferiti -->
 	
 	<LinearLayout
 		android:layout_width="match_parent"

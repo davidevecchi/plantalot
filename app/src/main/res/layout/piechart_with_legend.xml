@@ -11,15 +11,48 @@
     android:layout_gravity="center_vertical"
     >
     
-    <org.eazegraph.lib.charts.PieChart
-        android:id="@+id/piechart"
+    <FrameLayout
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:padding="16dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1.1"
-        app:egAnimationTime="1000"
-        app:egInnerPaddingColor="#fff6f6e9"
-        />
+        >
+        
+        <org.eazegraph.lib.charts.PieChart
+            android:layout_width="match_parent"
+            android:id="@+id/piechart"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            app:egAnimationTime="1000"
+            app:egInnerPaddingColor="#fff6f6e9"
+            />
+        
+        <LinearLayout
+            android:id="@+id/piechart_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            >
+            
+            <ImageView
+                android:id="@+id/piechart_btn_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:src="@drawable/ic_round_scale_24"
+                android:layout_gravity="center"
+                />
+            
+            <TextView
+                android:id="@+id/piechart_btn_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Area"
+                style="?attr/textAppearanceLabelLarge"
+                />
+            
+        </LinearLayout>
+        
+    </FrameLayout>
     
     <androidx.core.widget.NestedScrollView
         android:layout_height="wrap_content"

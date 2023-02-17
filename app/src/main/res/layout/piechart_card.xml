@@ -33,9 +33,10 @@
                 android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:lineHeight="32dp"
                 android:text="Giardino:\nGià piantati:\nCarriola:\nDisponibili:"
-                android:layout_marginEnd="48dp"
+                android:layout_marginEnd="72dp"
                 />
             
             <TextView
@@ -43,7 +44,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
+                android:textAppearance="?attr/textAppearanceTitleLarge"
+                android:lineHeight="32dp"
                 tools:text="16,0 m²\n4,2 m²\n4,2 m²\n11,8 m²"
                 />
         

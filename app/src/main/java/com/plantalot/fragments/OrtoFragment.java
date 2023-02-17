@@ -30,7 +30,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.plantalot.MyApplication;
 import com.plantalot.R;
 import com.plantalot.adapters.AiuolaThumbnailsAdapter;
-import com.plantalot.classes.Carriola;
+import com.plantalot.classes.PlantsCounter;
 import com.plantalot.classes.Giardino;
 import com.plantalot.classes.Orto;
 import com.plantalot.components.AiuolaView;
@@ -53,7 +53,7 @@ public class OrtoFragment extends Fragment {
     private View view;
     private String nomeOrto;
     private final RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
-    private Carriola ortaggi;
+    private PlantsCounter ortaggi;
     private PieChartView mPieChart;
 
 
@@ -157,6 +157,7 @@ public class OrtoFragment extends Fragment {
         return view;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void updateTable() {
         IntPair ortoDim = orto.calcOrtoDim();
         IntPair aiuolaDim = new IntPair();
@@ -191,7 +192,7 @@ public class OrtoFragment extends Fragment {
                     layoutManager.setJustifyContent(JustifyContent.CENTER);
                     layoutManager.setFlexWrap(FlexWrap.NOWRAP);
                     layoutManager.setAlignItems(AlignItems.STRETCH);
-                    AiuolaThumbnailsAdapter aiuolaThumbnailAdapter = new AiuolaThumbnailsAdapter(ortaggi, view);
+                    AiuolaThumbnailsAdapter aiuolaThumbnailAdapter = new AiuolaThumbnailsAdapter(ortaggi, orto.getOrtaggi(), view);
 
                     RecyclerView mRecyclerView = aiuolaView.findViewById(R.id.component_aiuola_content);
                     mRecyclerView.setLayoutManager(layoutManager);
@@ -205,7 +206,7 @@ public class OrtoFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updatePieChart() {
-        mPieChart.update(ortaggi.getFamiglieCount());
+        mPieChart.updateContent(ortaggi);
     }
 
 

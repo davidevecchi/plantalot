@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.google.common.base.Joiner;
 import com.plantalot.R;
-import com.plantalot.classes.Carriola;
+import com.plantalot.classes.PlantsCounter;
 import com.plantalot.classes.Giardino;
 import com.plantalot.classes.Varieta;
 import com.plantalot.database.DbPlants;
@@ -39,15 +39,15 @@ public class CarriolaOrtaggiAdapter extends RecyclerView.Adapter<CarriolaOrtaggi
 	private Resources res;
 	private Context context;
 	private final Giardino giardino;
-	private final Carriola carriola;
+	private final PlantsCounter plantsCounter;
 	private final CarriolaFragment fragment;
 
 	private final boolean isOrto;
 	
-	public CarriolaOrtaggiAdapter(@NonNull List<Pair<String, List<Pair<Varieta, Integer>>>> data, Carriola carriola, Giardino giardino, Boolean isOrto, CarriolaFragment fragment) {
+	public CarriolaOrtaggiAdapter(@NonNull List<Pair<String, List<Pair<Varieta, Integer>>>> data, PlantsCounter plantsCounter, Giardino giardino, Boolean isOrto, CarriolaFragment fragment) {
 		this.mData = data;
 		this.giardino = giardino;
-		this.carriola = carriola;
+		this.plantsCounter = plantsCounter;
 		this.fragment = fragment;
 		this.isOrto = isOrto;
 	}
@@ -74,7 +74,7 @@ public class CarriolaOrtaggiAdapter extends RecyclerView.Adapter<CarriolaOrtaggi
 		viewHolder.mTvName.setText(ortaggio);
 		updateCount(viewHolder.mTvInfo, ortaggio);
 		
-		CarriolaVarietaAdapter carriolaVarietaAdapter = new CarriolaVarietaAdapter(mData.get(position).second, carriola, giardino, isOrto, fragment, this);
+		CarriolaVarietaAdapter carriolaVarietaAdapter = new CarriolaVarietaAdapter(mData.get(position).second, plantsCounter, giardino, isOrto, fragment, this);
 		viewHolder.mRecyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.VERTICAL, false));
 		viewHolder.mRecyclerView.setAdapter(carriolaVarietaAdapter);
 		
@@ -92,8 +92,8 @@ public class CarriolaOrtaggiAdapter extends RecyclerView.Adapter<CarriolaOrtaggi
 	@SuppressLint("SetTextI18n")
 	@RequiresApi(api = Build.VERSION_CODES.N)
 	public void updateCount(TextView tv, String ortaggio) {
-		int nVarieta = carriola.countVarieta(ortaggio);
-		int nPiante = carriola.countPiante(ortaggio);
+		int nVarieta = plantsCounter.countVarieta(ortaggio);
+		int nPiante = plantsCounter.countPiante(ortaggio);
 		tv.setText(res.getQuantityString(R.plurals.n_varieta, nVarieta, nVarieta) + ", " + res.getQuantityString(R.plurals.n_piante, nPiante, nPiante));
 		fragment.updatePieChart();
 	}

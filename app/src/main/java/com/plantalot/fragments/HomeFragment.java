@@ -8,11 +8,8 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -20,18 +17,13 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.plantalot.MyApplication;
 import com.plantalot.R;
-import com.plantalot.adapters.HomeGiardiniAdapter;
 import com.plantalot.classes.Giardino;
-import com.plantalot.animations.NavigationIconClickListener;
 import com.plantalot.adapters.HomeOrtiAdapter;
 import com.plantalot.components.CircleButton;
 import com.plantalot.components.PieChartView;
@@ -136,7 +128,8 @@ public class HomeFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void setupCard() {
-        mPieChart.update(giardino.getFamiglieCount());
+//        mPieChart.updateContent(giardino.getOrti().values().iterator().next().getOrtaggi());
+        mPieChart.updateContent(giardino.getPlantsCounter());
         int totalArea = giardino.calcArea();
         int plantedArea = giardino.plantedArea();
         int carriolaArea = giardino.getCarriola().calcArea();

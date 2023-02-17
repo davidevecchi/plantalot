@@ -6,6 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
@@ -31,13 +32,40 @@ public class Splash extends Activity {
 	
 	private final static int SPLASH_DISPLAY_LENGTH = 500;
 	private final String TAG = "Splash";
-	private MyApplication app;
+	private MyApplication app;private boolean isInBackground = false;
+
+	@Override
+	protected void onPause() {
+		super.onPause();
+		isInBackground = true;
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		isInBackground = false;
+
+		final Handler handler = new Handler();
+		final Runnable runnable = new Runnable() {
+			@Override
+			public void run() {
+				// Check that the activity is still valid (it hasn't been destroyed) and the app is not in background
+				if (!isFinishing() && !isInBackground) {
+					Toast.makeText(getApplicationContext(), "Sembra che il tuo telefono sia offline.\nCollegati alla rete per accedere a Plantalot", Toast.LENGTH_LONG).show();
+				}
+				if (!isInBackground) {
+					handler.postDelayed(this, 10000);
+				}
+			}
+		};
+		handler.postDelayed(runnable, 5000);
+	}
 	
 	@RequiresApi(api = Build.VERSION_CODES.N)
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.splash);
 		app = (MyApplication) this.getApplication();
 		DbPlants.init(this);

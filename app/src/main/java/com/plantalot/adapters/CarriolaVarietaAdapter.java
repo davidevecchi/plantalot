@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.card.MaterialCardView;
 import com.plantalot.R;
-import com.plantalot.classes.Carriola;
+import com.plantalot.classes.PlantsCounter;
 import com.plantalot.classes.Giardino;
 import com.plantalot.classes.Varieta;
 import com.plantalot.database.DbPlants;
@@ -32,18 +32,18 @@ public class CarriolaVarietaAdapter extends RecyclerView.Adapter<CarriolaVarieta
     private final List<Pair<Varieta, Integer>> mData;
     private final CarriolaOrtaggiAdapter mParentAdapter;
     private final Giardino giardino;
-    private final Carriola carriola;
+    private final PlantsCounter plantsCounter;
     private final CarriolaFragment fragment;
     private final int DELAY = 600;
     private boolean holding = false;
     private final boolean isOrto;
 
-    public CarriolaVarietaAdapter(@NonNull List<Pair<Varieta, Integer>> data, Carriola carriola, Giardino giardino, Boolean isOrto,
+    public CarriolaVarietaAdapter(@NonNull List<Pair<Varieta, Integer>> data, PlantsCounter plantsCounter, Giardino giardino, Boolean isOrto,
                                   CarriolaFragment fragment, CarriolaOrtaggiAdapter parentAdapter) {
         this.mData = data;
         this.mParentAdapter = parentAdapter;
         this.giardino = giardino;
-        this.carriola = carriola;
+        this.plantsCounter = plantsCounter;
         this.fragment = fragment;
         this.isOrto = isOrto;
     }
@@ -74,7 +74,7 @@ public class CarriolaVarietaAdapter extends RecyclerView.Adapter<CarriolaVarieta
         viewHolder.mBtnDec.setCardBackgroundColor(mBtnBkg);
         viewHolder.mBtnInc.setCardBackgroundColor(mBtnBkg);
 
-        viewHolder.mView.setAlpha(carriola.getPianteCount(ortaggio, varieta) == 0 ? 0.5f : 1f);
+        viewHolder.mView.setAlpha(plantsCounter.getPianteCount(ortaggio, varieta) == 0 ? 0.5f : 1f);
 
         viewHolder.mBtnDec.setOnClickListener(view -> {
             if (!holding) {
@@ -103,7 +103,7 @@ public class CarriolaVarietaAdapter extends RecyclerView.Adapter<CarriolaVarieta
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         if (mHandler != null) return true;
-                        if (carriola.getPianteCount(ortaggio, varieta) == 0) {
+                        if (plantsCounter.getPianteCount(ortaggio, varieta) == 0) {
                             holding = false;
                             return true;
                         }
@@ -130,7 +130,7 @@ public class CarriolaVarietaAdapter extends RecyclerView.Adapter<CarriolaVarieta
                 public void run() {
                     holding = true;
                     viewHolder.mTvCount.setText(updateCount(ortaggio, varietaObj, -pack, viewHolder));
-                    if (carriola.getPianteCount(ortaggio, varieta) > 0) {
+                    if (plantsCounter.getPianteCount(ortaggio, varieta) > 0) {
                         mHandler.postDelayed(this, DELAY);
                     }
                 }
@@ -178,14 +178,14 @@ public class CarriolaVarietaAdapter extends RecyclerView.Adapter<CarriolaVarieta
     @RequiresApi(api = Build.VERSION_CODES.N)
     private String updateCount(String ortaggio, Varieta varietaObj, int step, ViewHolder viewHolder) {
         String varieta = varietaObj.getClassificazione_varieta();
-        int oldCount = carriola.getPianteCount(ortaggio, varieta);
+        int oldCount = plantsCounter.getPianteCount(ortaggio, varieta);
         int newCount = Math.max(0, step != 0 ? oldCount + step : 0);
         viewHolder.mView.setAlpha(newCount == 0 ? 0.5f : 1f);
-        carriola.put(ortaggio, varieta, newCount);
+        plantsCounter.put(ortaggio, varieta, newCount);
         fragment.updateOccupiedArea(varietaObj.calcArea() * (newCount - oldCount));
         mParentAdapter.updateCount(((View) viewHolder.mView.getParent().getParent()).findViewById(R.id.carriola_ortaggio_info), ortaggio);
         if (!isOrto) {
-            giardino.setCarriola(carriola);
+            giardino.setCarriola(plantsCounter);
             DbUsers.updateGiardino(giardino);
         }
         return Integer.toString(newCount);

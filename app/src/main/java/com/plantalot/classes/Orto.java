@@ -1,13 +1,9 @@
 package com.plantalot.classes;
 
-import android.content.Context;
-
-import com.plantalot.R;
 import com.plantalot.database.DbPlants;
 import com.plantalot.utils.IntPair;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class Orto {
@@ -21,14 +17,14 @@ public class Orto {
 	private final IntPair aiuoleCount;
 	private Esposizione esposizione;
 	private Orientamento orientamento;
-	private Carriola ortaggi;
+	private PlantsCounter ortaggi;
 	
 	public Orto() {
 		this.aiuoleDim = new IntPair(120, 200);
 		this.aiuoleCount = new IntPair(3, 2);
 		this.esposizione = Esposizione.SOLE;
 		this.orientamento = Orientamento.N;
-		this.ortaggi = new Carriola();
+		this.ortaggi = new PlantsCounter();
 	}
 	
 	public Orto(String nome) {
@@ -42,7 +38,7 @@ public class Orto {
 		this.aiuoleCount = new IntPair(other.aiuoleCount.x, other.aiuoleCount.y);
 		this.esposizione = other.esposizione;
 		this.orientamento = other.orientamento;
-		this.ortaggi = new Carriola(other.ortaggi);
+		this.ortaggi = new PlantsCounter(other.ortaggi);
 	}
 
 	public void updateParameters(Orto other) {
@@ -85,8 +81,8 @@ public class Orto {
 		this.orientamento = orientamento;
 	}
 
-	public void setOrtaggi(Carriola ortaggi) {
-		this.ortaggi = new Carriola(ortaggi);
+	public void setOrtaggi(PlantsCounter ortaggi) {
+		this.ortaggi = new PlantsCounter(ortaggi);
 	}
 
 	public String getNome() {
@@ -129,7 +125,7 @@ public class Orto {
 		return orientamento;
 	}
 	
-	public Carriola getOrtaggi() {
+	public PlantsCounter getOrtaggi() {
 		return ortaggi;
 	}
 

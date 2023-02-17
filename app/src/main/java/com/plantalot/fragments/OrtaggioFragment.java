@@ -33,7 +33,7 @@ import com.plantalot.MyApplication;
 import com.plantalot.R;
 import com.plantalot.adapters.OrtaggioCardListAdapter;
 import com.plantalot.adapters.OrtaggioSpecsAdapter;
-import com.plantalot.classes.Carriola;
+import com.plantalot.classes.PlantsCounter;
 import com.plantalot.classes.Giardino;
 import com.plantalot.classes.Pianta;
 import com.plantalot.classes.Varieta;
@@ -59,7 +59,7 @@ public class OrtaggioFragment extends Fragment {
     private final static String[] months = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII"};
     private LinkedList<String> dropdownItems;
     private Giardino giardino;
-    private Carriola carriola;
+    private PlantsCounter plantsCounter;
     private View view;
     private final Map<String, Varieta> ortaggioDocuments = new HashMap<>();
 
@@ -67,7 +67,7 @@ public class OrtaggioFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         giardino = ((MyApplication) this.getActivity().getApplication()).user.getGiardinoCorrente();
-        carriola = giardino.getCarriola();
+        plantsCounter = giardino.getCarriola();
     }
 
     @Override
@@ -110,19 +110,19 @@ public class OrtaggioFragment extends Fragment {
         String ortaggioName = varieta.getClassificazione_ortaggio();
         String varietaName = varieta.getClassificazione_varieta();
         View buttonCarriola = view.findViewById(R.id.ortaggio_fl_button_carriola);
-        boolean isIn = carriola.contains(ortaggioName, varietaName);
+        boolean isIn = plantsCounter.contains(ortaggioName, varietaName);
         int icon = isIn ? R.drawable.ic_round_wheelbarrow_24 : R.drawable.ic_round_wheelbarrow_border_24;
         String label = isIn ? "Togli dalla carriola" : "Metti in carriola";
         ((MaterialButton) buttonCarriola.findViewById(R.id.component_circle_button_icon)).setIconResource(icon);
         ((TextView) buttonCarriola.findViewById(R.id.component_circle_button_label)).setText(label);
         buttonCarriola.setOnClickListener(v -> {
             if (isIn) {
-                carriola.remove(ortaggioName, varietaName);
+                plantsCounter.remove(ortaggioName, varietaName);
             } else {
-                carriola.put(ortaggioName, varietaName, varieta.getAltro_pack());
+                plantsCounter.put(ortaggioName, varietaName, varieta.getAltro_pack());
             }
             setupButton(varieta);
-            giardino.setCarriola(carriola);
+            giardino.setCarriola(plantsCounter);
             DbUsers.updateGiardino(giardino);
         });
         buttonCarriola.setVisibility(View.VISIBLE);

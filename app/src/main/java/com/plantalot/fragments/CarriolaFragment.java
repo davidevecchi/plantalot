@@ -30,22 +30,15 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.plantalot.MyApplication;
 import com.plantalot.R;
 import com.plantalot.adapters.CarriolaOrtaggiAdapter;
-import com.plantalot.adapters.ChartLegendAdapter;
-import com.plantalot.classes.Carriola;
+import com.plantalot.classes.PlantsCounter;
 import com.plantalot.classes.Giardino;
 import com.plantalot.classes.Orto;
 import com.plantalot.classes.Varieta;
 import com.plantalot.components.PieChartView;
 import com.plantalot.database.DbUsers;
-import com.plantalot.utils.ColorUtils;
-import com.plantalot.utils.Consts;
 
 //import org.eazegraph.lib.charts.PieChart;
 //import org.eazegraph.lib.models.PieModel;
-
-import org.eazegraph.lib.charts.PieChart;
-import org.eazegraph.lib.models.PieModel;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -58,7 +51,7 @@ public class CarriolaFragment extends Fragment {
 
     private View view;
     private Giardino giardino;
-    private Carriola carriola, carriolaNew;
+    private PlantsCounter plantsCounter, plantsCounterNew;
     private int totalArea, plantedArea, carriolaArea;
     private TextView areaValuesTv;
     private Button confirmBtn, clearBtn;
@@ -78,11 +71,11 @@ public class CarriolaFragment extends Fragment {
         if (isOrto) {
             String nomeOrto = getArguments().getString("nomeOrto");
             orto = giardino.getOrti().get(nomeOrto);
-            carriola = orto.getOrtaggi();
-            carriolaNew = new Carriola(carriola);
+            plantsCounter = orto.getOrtaggi();
+            plantsCounterNew = new PlantsCounter(plantsCounter);
         } else {
-            carriola = carriolaNew = giardino.getCarriola();
-            carriola.removeEmpty();
+            plantsCounter = plantsCounterNew = giardino.getCarriola();
+            plantsCounter.removeEmpty();
             ortiSet = new HashSet<>(giardino.getOrtiNames());
         }
         totalArea = giardino.calcArea();
@@ -114,12 +107,12 @@ public class CarriolaFragment extends Fragment {
             }
         }
 
-        if (carriola.notEmpty()) {
+        if (plantsCounter.notEmpty()) {
             scrollView.setVisibility(View.GONE);
             buttons.setVisibility(View.VISIBLE);
             view.findViewById(R.id.carriola_progressBar).setVisibility(View.VISIBLE);
             view.findViewById(R.id.carriola_text_vuota).setVisibility(View.GONE);
-            setupContent(carriola.toList());
+            setupContent(plantsCounter.toList());
         } else {
             buttons.setVisibility(View.GONE);
             ((TextView) view.findViewById(R.id.carriola_text_vuota)).setText(isOrto ? R.string.orto_vuoto : R.string.carriola_vuota);
@@ -202,7 +195,7 @@ public class CarriolaFragment extends Fragment {
             scrollView.setVisibility(View.VISIBLE);
             RecyclerView ortaggiRecyclerView = view.findViewById(R.id.carriola_ortaggi_recycler);
             ortaggiRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            CarriolaOrtaggiAdapter carriolaOrtaggiAdapter = new CarriolaOrtaggiAdapter(carriolaList, carriolaNew, giardino, isOrto, this);
+            CarriolaOrtaggiAdapter carriolaOrtaggiAdapter = new CarriolaOrtaggiAdapter(carriolaList, plantsCounterNew, giardino, isOrto, this);
             ortaggiRecyclerView.setAdapter(carriolaOrtaggiAdapter);
         });
 
@@ -222,7 +215,7 @@ public class CarriolaFragment extends Fragment {
             builder.setNegativeButton(R.string.annulla, (dialog, j) -> dialog.cancel());
             builder.setPositiveButton(R.string.conferma, (dialog, j) -> {
                 dialog.cancel();
-                carriola.clear();
+                plantsCounter.clear();
                 DbUsers.updateGiardino(giardino);
                 Navigation.findNavController(view).popBackStack();
             });
@@ -256,9 +249,9 @@ public class CarriolaFragment extends Fragment {
         Random rnd = new Random(System.currentTimeMillis());
         HashMap<String, Orto> orti = giardino.getOrti();
         ArrayList<String> keys = new ArrayList<>(ortiSet);
-        for (String ortaggio : carriolaNew.nomiOrtaggi()) {
-            for (String varieta : carriolaNew.nomiVarieta(ortaggio)) {
-                int count = carriolaNew.getPianteCount(ortaggio, varieta);
+        for (String ortaggio : plantsCounterNew.nomiOrtaggi()) {
+            for (String varieta : plantsCounterNew.nomiVarieta(ortaggio)) {
+                int count = plantsCounterNew.getPianteCount(ortaggio, varieta);
                 if (count > 0) {
                     int r = rnd.nextInt(keys.size());
                     orti.get(keys.get(r)).addVarieta(ortaggio, varieta, count);
@@ -266,22 +259,22 @@ public class CarriolaFragment extends Fragment {
             }
         }
         giardino.setOrti(orti);
-        carriola.clear();
-        carriolaNew.clear();
-        giardino.setCarriola(carriola);
+        plantsCounter.clear();
+        plantsCounterNew.clear();
+        giardino.setCarriola(plantsCounter);
     }
 
     private void updateOrto() {
-        carriolaNew.removeEmpty();
-        orto.setOrtaggi(carriolaNew);
+        plantsCounterNew.removeEmpty();
+        orto.setOrtaggi(plantsCounterNew);
     }
 
     private void setupToolbar() {
         MaterialToolbar toolbar = view.findViewById(R.id.carriola_toolbar);
         toolbar.setNavigationOnClickListener(v -> {
             if (!isOrto) {
-                carriolaNew.removeEmpty();
-                giardino.setCarriola(carriolaNew);
+                plantsCounterNew.removeEmpty();
+                giardino.setCarriola(plantsCounterNew);
                 DbUsers.updateGiardino(giardino);
             }
             Navigation.findNavController(v).popBackStack();
@@ -297,7 +290,7 @@ public class CarriolaFragment extends Fragment {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void updatePieChart() {
-        mPieChart.update(carriolaNew.getFamiglieCount());
+        mPieChart.updateContent(plantsCounterNew);
     }
 
 }
